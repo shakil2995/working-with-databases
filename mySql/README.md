@@ -1,1 +1,1 @@
-## crud operation with mySql
+## curd operation with mySql
