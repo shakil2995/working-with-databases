@@ -1,5 +1,12 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+var _ = require('lodash');
+const app = express();
 const mongoose = require('mongoose');
 const User = require('./user');
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
 mongoose.connect("mongodb://localhost:27017/fruitsDB",()=>{
     console.log("Db Connected");
 });
