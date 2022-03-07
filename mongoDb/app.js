@@ -3,19 +3,23 @@ const bodyParser = require('body-parser');
 var _ = require('lodash');
 const app = express();
 const mongoose = require('mongoose');
-const User = require('./user');
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
 mongoose.connect("mongodb://localhost:27017/fruitsDB",()=>{
     console.log("Db Connected");
 });
-run();
-async function run(){
-    const user = new User({name:"orange",rating:5})
-    await user.save()
+
+const userSchema = new mongoose.Schema({
+    name :String,
+    rating:Number,
+});
+const User = mongoose.model("User",userSchema);
+
+    const user = new User({name:"newmelon",rating:5})
+    user.save()
     console.log(user);
-}
 
 
 // const fruitSchema = new mongoose.Schema({
