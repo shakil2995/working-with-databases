@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User",userSchema);
 
-const user = new User({name:"newmelon",rating:5})
-user.save()
+const user = new User({name:"tilottoma",rating:5})
+// 
 // console.log(user);
 
 const fruitSchema = new mongoose.Schema({
@@ -28,11 +28,20 @@ const fruitSchema = new mongoose.Schema({
 })
 const Fruit = mongoose.model("Fruit",fruitSchema);
 const fruit = new Fruit({
-    name:"Melon",
+    name:"boroi",
     price:10.5,
     rating:4.3,
 })
-fruit.save();
-console.log(user);
-console.log(fruit);
-
+// user.save()
+// fruit.save();
+// console.log(user);
+// console.log(fruit);
+Fruit.find(function(err,fruits){
+    if(err){
+        console.log(err);
+    } else{
+        fruits.forEach(fruit => {
+            console.log(fruit.name);
+        })
+    }
+})
