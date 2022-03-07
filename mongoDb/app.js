@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 app.use(bodyParser.urlencoded({ extended: true }))
 
 mongoose.connect("mongodb://localhost:27017/fruitsDB",()=>{
-    console.log("Db Connected");
+    console.log("Connected to fruitsDB");
 });
 
 const userSchema = new mongoose.Schema({
@@ -17,34 +17,22 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User",userSchema);
 
-    const user = new User({name:"newmelon",rating:5})
-    user.save()
-    console.log(user);
+const user = new User({name:"newmelon",rating:5})
+user.save()
+// console.log(user);
 
-
-// const fruitSchema = new mongoose.Schema({
-//     name :String,
-//     rating:Number,
-//     review:String
-// });
-// const Fruit = mongoose.model("Fruit",fruitSchema);
-
-// const fruit = new Fruit({
-
-//     name:"Apple",
-//     rating:7,
-//     review:"Pretty good"
-//     },
-//     {
-//         name:"Orange",
-//         rating:8,
-//         review:"Pretty good too"
-//     }
-// );
-// fruit.save();
-
-
-
-
-
+const fruitSchema = new mongoose.Schema({
+    name : String,
+    price : Number,
+    rating : Number,
+})
+const Fruit = mongoose.model("Fruit",fruitSchema);
+const fruit = new Fruit({
+    name:"Melon",
+    price:10.5,
+    rating:4.3,
+})
+fruit.save();
+console.log(user);
+console.log(fruit);
 
